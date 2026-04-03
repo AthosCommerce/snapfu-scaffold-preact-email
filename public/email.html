@@ -1,0 +1,77 @@
+<!--
+
+    ****************************************
+
+    DO NOT ADD STYLESHEETS OR SCRIPTS
+
+    ****************************************
+
+    Only make edits to the script section:
+    "Template Mockup Configuration"
+
+    ****************************************
+
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Email Recs</title>
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+		<script>
+			// clear our cookies to remove from the request
+			document.cookie = 'ssShopperId=; Max-Age=-99999999;';
+			document.cookie = 'ssViewedProducts=; Max-Age=-99999999';
+			document.cookie = 'ssCartProducts=; Max-Age=-9999999';
+		</script>
+
+		<script id="athos-context" src="bundle.js">
+			config = {
+			    mode: "production",
+			    instantiators: {
+			        recommendation: {
+			            config: {
+			                branch: "development"
+			            }
+			        }
+			    }
+			}
+		</script>
+
+		<script>
+			/* Template Mockup Configuration Section */
+
+			const config = {
+				component: 'Email', // name of component to test
+				siteId: athos.client.globals.siteId, // siteId should match what is in index.js but can be hard coded here as needed
+			};
+
+			// to test with specific data uncomment the following line and alter as needed
+			// config.results = [{"id":"175547","mappings":{"core":{"uid":"175547","name":"Off She Goes White Skinny Jeans","sku":"C-JU-W1-P1034","msrp":75,"price":58,"thumbnailImageUrl":"https://www.fakesite.com/product_images_thumb_med/use_3_thumb_med.jpg","url":"/product/C-JU-W1-P1034","rating":"5","brand":"Just USA","popularity":4455,"imageUrl":"https://www.fakesite.com/product_images_large/use_3_large.jpg","ratingCount":1111}},"attributes":{}}];
+
+			if (!config.siteId) {
+				console.error('No siteId found. Please check your config.');
+			} else {
+				const profile = 'default-trending';
+				const { results, component, siteId, currentBranch } = config;
+				const profileResponse = { profile: { tag: profile, display: { template: { component: component }, templateParameters: {} } } };
+				const profileKey = `/v1/profile/*`;
+
+				athos.client.requesters.recommend.cache.set(profileKey, profileResponse);
+
+				if (config.results) {
+					const recommendResponse = [{ results: results, profile: { tag: profile } }];
+					const recommendKey = `/v1/recommend/*`;
+					athos.client.requesters.recommend.cache.set(recommendKey, recommendResponse);
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<script type="athos/recommend" profile="default-trending"></script>
+	</body>
+</html>

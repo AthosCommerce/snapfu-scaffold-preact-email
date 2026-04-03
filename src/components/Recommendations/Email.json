@@ -1,0 +1,7 @@
+{
+	"type": "snap/recommendation/email",
+	"name": "Email",
+	"label": "Default Template",
+	"description": "Default email recommendations template.",
+	"component": "Email"
+}
