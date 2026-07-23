@@ -18,7 +18,7 @@
 		"lighthouse": "lhci --config ./tests/lighthouse/lighthouserc.js autorun",
 		"prepare": "husky install"
 	},
-	"searchspring": {
+	"athos": {
 		"siteId": {
 			"{{snapfu.siteId}}": {
 				"name": "{{snapfu.name}}"
