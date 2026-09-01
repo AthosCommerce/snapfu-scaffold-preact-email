@@ -14,7 +14,7 @@
 		"dev": "kill-port 3333 && webpack serve --config webpack.dev.js",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
 		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
-		"test": "kill $(lsof -ti:3333,8888); webpack serve --config webpack.dev.js & ((cypress run --project tests || cypress run --project tests) && kill $(lsof -ti:3333,8888))",
+		"test": "kill-port 3333 8888 && webpack serve --config webpack.dev.js & ((cypress run --project tests || cypress run --project tests) && kill-port 3333 8888)",
 		"lighthouse": "lhci --config ./tests/lighthouse/lighthouserc.js autorun",
 		"prepare": "husky install"
 	},
@@ -31,12 +31,12 @@
 		"tags": [
 			"email"
 		],
-		"version": "1.9.1",
+		"version": "1.12.0",
 		"scaffold": "snapfu-scaffold-preact-email"
 	},
 	"prettier": "@searchspring/prettier",
 	"dependencies": {
-		"@athoscommerce/snap-preact": "1.9.1",
+		"@athoscommerce/snap-preact": "1.12.0",
 		"mobx": "6.15.1",
 		"mobx-react-lite": "4.1.1",
 		"preact": "10.28.4"
