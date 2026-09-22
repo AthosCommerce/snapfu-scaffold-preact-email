@@ -11,10 +11,10 @@
 		"build": "rm -rf ./dist && webpack --config webpack.modern.js && webpack --config webpack.universal.js",
 		"cypress": "cypress open --project tests",
 		"clean": "rm -rf ./node_modules && rm -f ./package-lock.json",
-		"dev": "kill-the-port 3333 && webpack serve --config webpack.dev.js",
+		"dev": "webpack serve --config webpack.dev.js",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
 		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
-		"test": "kill-the-port 3333 8888 && webpack serve --config webpack.dev.js & ((cypress run --project tests || cypress run --project tests) && kill-the-port 3333 8888)",
+		"test": "webpack serve --config webpack.dev.js & (cypress run --project tests || cypress run --project tests)",
 		"lighthouse": "lhci --config ./tests/lighthouse/lighthouserc.js autorun",
 		"prepare": "husky install"
 	},
@@ -71,8 +71,7 @@
 		"webpack-cli": "^5.0.1",
 		"webpack-dev-server": "^4.13.2",
 		"webpack-merge": "^5.8.0",
-		"cypress-fail-fast": "^7.1.0",
-		"kill-the-port": "0.1.3"
+		"cypress-fail-fast": "^7.1.0"
 	},
 	"lint-staged": {
 		"./package.json": [
