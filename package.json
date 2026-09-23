@@ -31,12 +31,12 @@
 		"tags": [
 			"email"
 		],
-		"version": "1.13.1",
+		"version": "1.13.2",
 		"scaffold": "snapfu-scaffold-preact-email"
 	},
 	"prettier": "@searchspring/prettier",
 	"dependencies": {
-		"@athoscommerce/snap-preact": "1.13.1",
+		"@athoscommerce/snap-preact": "1.13.2",
 		"mobx": "6.15.1",
 		"mobx-react-lite": "4.1.1",
 		"preact": "10.28.4"
