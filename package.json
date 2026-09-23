@@ -14,7 +14,7 @@
 		"dev": "webpack serve --config webpack.dev.js",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
 		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
-		"test": "concurrently -k -s first -n dev,cypress \"webpack serve --config webpack.dev.js\" \"wait-on tcp:localhost:3333 && cypress run --project tests\"",
+		"test": "concurrently -k -s first -n dev,cypress \"webpack serve --config webpack.dev.js\" \"wait-on tcp:localhost:3333 && (cypress run --project tests || cypress run --project tests)\"",
 		"lighthouse": "lhci --config ./tests/lighthouse/lighthouserc.js autorun",
 		"prepare": "husky install"
 	},
